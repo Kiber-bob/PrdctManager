@@ -25,6 +25,9 @@ class ProductManagerTest {
         manager.add(book2);
         manager.add(smartphone1);
         manager.add(smartphone2);
+
+        repository.save(smartphone1);
+        repository.save(smartphone2);h
     }
 
     @Test
@@ -33,6 +36,15 @@ class ProductManagerTest {
         Product[] actual = manager.searchBy("book2");
         assertArrayEquals(expected, actual);
     }
+
+//    @Test
+//    public void shouldSearch() {
+//        Product[] expected = {smartphone1, smartphone2};
+//        Product[] actual = manager.searchBy("manufacturer");
+//        assertArrayEquals(expected, actual);
+//    }
+
+
 
     @Test
     public void shouldSearchByAuthor() {

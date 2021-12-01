@@ -10,7 +10,7 @@ import java.util.Objects;
 @AllArgsConstructor
 //@NoArgsConstructor
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode
 
 public class Smartphone extends Product {
 
