@@ -26,8 +26,6 @@ class ProductManagerTest {
         manager.add(smartphone1);
         manager.add(smartphone2);
 
-        repository.save(smartphone1);
-        repository.save(smartphone2);
     }
 
     @Test
