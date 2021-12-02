@@ -15,6 +15,7 @@ class ProductRepositoryTest {
     Product book2 = new Book(2, "book2", 700, "author2");
     Product smartphone1 = new Smartphone(3, "samsung", 5000, "south korean");
     Product smartphone2 = new Smartphone(4, "zte", 2000, "china");
+    Product smartphone3 = new Smartphone(5, "samsung", 7000, "south koren");
 
     @BeforeEach
     public void setUp() {
@@ -22,18 +23,19 @@ class ProductRepositoryTest {
         repository.save(book2);
         repository.save(smartphone1);
         repository.save(smartphone2);
+        repository.save(smartphone3);
     }
 
     @Test
     public void shouldSaveAll() {
-        Product[] expected = {book1, book2, smartphone1, smartphone2};
+        Product[] expected = {book1, book2, smartphone1, smartphone2, smartphone3};
         Product[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldFindAll() {
-        Product[] expected = {book1, book2, smartphone1, smartphone2};
+        Product[] expected = {book1, book2, smartphone1, smartphone2, smartphone3};
         Product[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
     }
@@ -41,10 +43,8 @@ class ProductRepositoryTest {
     @Test
     public void shouldRemoveById() {
         repository.removeById(1);
-        Product[] expected = {book2, smartphone1, smartphone2};
+        Product[] expected = {book2, smartphone1, smartphone2, smartphone3};
         Product[] actual = repository.findAll();
         assertArrayEquals(expected, actual);
     }
-
-
 }

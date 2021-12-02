@@ -17,6 +17,7 @@ class ProductManagerTest {
     Product book2 = new Book(2, "book2", 700, "author2");
     Product smartphone1 = new Smartphone(3, "samsung", 5000, "south korean");
     Product smartphone2 = new Smartphone(4, "zte", 2000, "china");
+    Product smartphone3 = new Smartphone(5, "samsung", 7000, "south korean");
 
 
     @BeforeEach
@@ -25,27 +26,32 @@ class ProductManagerTest {
         manager.add(book2);
         manager.add(smartphone1);
         manager.add(smartphone2);
-
+        manager.add(smartphone3);
     }
 
     @Test
-    public void shouldSearchByNameBook() {
+    public void shouldSearchBySameTerm1() { // Искать с одинаковым поисковым запросом
+        Product[] expected = {book1, book2};
+        Product[] actual = manager.searchBy("book");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchBySameTerm2() { // Искать с одинаковым поисковым запросом
+        Product[] expected = {smartphone1, smartphone3};
+        Product[] actual = manager.searchBy("samsung");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByNameBook() { // Искать по имени книги
         Product[] expected = {book2};
         Product[] actual = manager.searchBy("book2");
         assertArrayEquals(expected, actual);
     }
 
-//    @Test
-//    public void shouldSearch() {
-//        Product[] expected = {smartphone1, smartphone2};
-//        Product[] actual = manager.searchBy("manufacturer");
-//        assertArrayEquals(expected, actual);
-//    }
-
-
-
     @Test
-    public void shouldSearchByAuthor() {
+    public void shouldSearchByAuthor() { // Искать по автору книги
         Product[] expected = {book1};
         Product[] actual = manager.searchBy("author1");
         assertArrayEquals(expected, actual);
@@ -59,29 +65,29 @@ class ProductManagerTest {
     }
 
     @Test
-    public void shouldSearchByNameSmartphone1() {
-        Product[] expected = {smartphone1};
+    public void shouldSearchByNameSmartphone1() { // Искать по имени смартфона
+        Product[] expected = {smartphone1, smartphone3};
         Product[] actual = manager.searchBy("samsung");
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldSearchByNameSmartphone2() {
+    public void shouldSearchByNameSmartphone2() { // Искать по имени смартфона
         Product[] expected = {smartphone2};
         Product[] actual = manager.searchBy("zte");
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldSearchByManufacturerSmartphone2() {
+    public void shouldSearchByManufacturerSmartphone2() { // Искать по производителю
         Product[] expected = {smartphone2};
         Product[] actual = manager.searchBy("china");
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldSearchByManufacturerSmartphone1() {
-        Product[] expected = {smartphone1};
+    public void shouldSearchByManufacturerSmartphone1() { // Искать по производителю
+        Product[] expected = {smartphone1, smartphone3};
         Product[] actual = manager.searchBy("south korean");
         assertArrayEquals(expected, actual);
     }
