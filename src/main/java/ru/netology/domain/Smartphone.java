@@ -9,8 +9,6 @@ import java.util.Objects;
 
 @AllArgsConstructor
 @Data
-@EqualsAndHashCode
-
 public class Smartphone extends Product {
 
     private String manufacturer;

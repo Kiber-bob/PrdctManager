@@ -9,7 +9,6 @@ import java.util.Objects;
 
 @AllArgsConstructor
 @Data
-@EqualsAndHashCode
 public class Book extends Product {
 
     private String author;
